@@ -1,9 +1,9 @@
 # Site
-name: '세현 일지'
-description: '개발이 하고싶어요.'
+name: 'HotHotChoco'
+description: '노드.js Express 백엔드 개발자를 꿈꿉니다.'
 meta_description: 'node.js express back-end'
-logo: 'assets/images/logo.png'
-favicon: 'assets/images/logo.png'
+logo: '/images/logo.png'
+favicon: '/images/logo.png'
 #baseurl: '/저장소이름/'
 google_analytics: ''
 disqus: '' #댓글 api 이용시 disqus-id 입력

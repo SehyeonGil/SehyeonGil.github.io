@@ -1,11 +1,9 @@
 ---
 layout: post
-title:  "첫포스트"
-author: 사용자명
-categories: [ Jekyll ]
-image: assets/images/11.jpg
-featured: true
-hidden: false
+title: 첫포스트
+date: 2019-09-23 18:42:00
+categories: posts
+cover: cover.jpg
 ---
 
 ## 첫 블로그 포스트 입니다.
