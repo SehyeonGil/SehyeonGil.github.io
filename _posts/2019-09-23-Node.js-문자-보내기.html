@@ -33,7 +33,8 @@ cover: cover.jpg
 다시 API v2를 이용했다.</p>
 <hr>
 <p>
-{% highlight node.js %}
+{% highlight javascript linenos %}
+{% raw %}
     exports.smsVerification_post_ncpV2 = function (req, res, next) {
     const phoneNumber = req.body.phoneNumber;
     const NCP_accessKey = secretKey.NCP_API_access_key;          
@@ -96,6 +97,7 @@ cover: cover.jpg
         console.log(html);
     });
 };
+{% endraw %}
 {% endhighlight %}
 </p>
 <hr>
