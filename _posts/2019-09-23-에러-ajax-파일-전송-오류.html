@@ -1,0 +1,41 @@
+---
+layout: post
+title: 에러 : ajax 파일 전송 오류
+date: 2019-09-23 21:15:00
+categories: posts
+cover: cover.jpg
+---
+<head>
+	<title>에러 : ajax 파일 전송 오류</title>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="title" content="에러 : ajax 파일 전송 오류">
+    <meta name="description" content="Jquery ajax 옵션 | ajax로 비동기 파일 전송 작업 중 Illegal invocation 에러가 뜨면서 파일이 넘어가지 않았다. 잘 짠 것 같은데 무슨 문제일까 뒤적뒤적 구글링 하다 보니, ajax 옵션 문제였다.  ajax로 파일 전송 시 contentType : false processData: false 이렇게 두 가지 옵션을 주어야 하는데, contentType은 데">
+	<meta property="og:type" content="article">
+	<meta property="og:site_name" content="HotHotChoco">
+	<meta property="og:title" content="에러 : ajax 파일 전송 오류">
+	<meta property="og:description" content="Jquery ajax 옵션 | ajax로 비동기 파일 전송 작업 중 Illegal invocation 에러가 뜨면서 파일이 넘어가지 않았다. 잘 짠 것 같은데 무슨 문제일까 뒤적뒤적 구글링 하다 보니, ajax 옵션 문제였다.  ajax로 파일 전송 시 contentType : false processData: false 이렇게 두 가지 옵션을 주어야 하는데, contentType은 데">
+	<meta property="og:url" content="https://sehyeongil.github.io/posts/2019/09/23/에러-ajax-파일-전송-오류.html">
+</head>
+<body>
+    <img src="/images/2019-09-23-2.png">
+    <br>
+	<p>ajax로 비동기 파일 전송 작업 중 Illegal invocation 에러가 뜨면서 파일이 넘어가지 않았다.<br>
+    잘 짠 것 같은데 무슨 문제일까 뒤적뒤적 구글링 하다 보니, ajax 옵션 문제였다.
+    </p>
+    <br>
+    <p>ajax로 파일 전송 시</p>
+    <ul>
+        <li>contentType : false</li>
+        <li>processData: false</li>
+    </ul>
+    <p>이렇게 두 가지 옵션을 주어야 하는데, contentType은 데이터 content-type의 헤더 값이다.</p>
+    <p>기본값으로 "application/x-www-form-urlencoded; charset=UTF-8" 설정되어있고, 파일 전송 시 "multipart/form-data" 전송될 수 있도록 false로 설정해 주어야 한다.</p><br>
+    <p>processData는  일반적으로 서버에 전달되는 데이터는 아래와 같이 query string 이라는 형태로 전달되고,</p>
+    <p>ex) http://example.com/over/there?title=Main_page&action=raw</p>
+    <p>data 파라미터로 전달된 데이터를 jQuery 내부적으로 query string 으로 만드는데, 파일 전송의 경우 이를 하지 않아야 하고 이를 설정하는 것이 processData: false 이다.</p>
+    <p>출처: https://repacat.tistory.com/38 [레파캣]</p>
+    <br>
+
+</body>

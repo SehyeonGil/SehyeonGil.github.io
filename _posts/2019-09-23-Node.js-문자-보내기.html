@@ -13,13 +13,13 @@ cover: cover.jpg
 	<meta name="title" content="Node.js 문자 보내기">
 	<meta name="description" content="네이버 클라우드 플랫폼 SENS 사용해서 SMS 메시지 보내기 | 리빙드로우 개발 중 작가 등록 시 휴대전화&nbsp;인증 서비스가 필요하였다. 본인인증까지는 필요하지 않았기 때문에, 단순 SMS 메시지를 통해 인증번호를 전송하는 정도면 충분하겠다 생각했다.  그래서 여러 SMS 대행업체를 찾다가, 네이버 클라우드 플랫폼에서&nbsp;SENS(Simple &amp; Easy Notification Service)를 서비스하는 것을 발견했다. ht">
 	<meta property="og:type" content="article">
-	<meta property="og:site_name" content="brunch">
+	<meta property="og:site_name" content="HotHotChoco">
 	<meta property="og:title" content="Node.js 문자 보내기">
 	<meta property="og:description" content="네이버 클라우드 플랫폼 SENS 사용해서 SMS 메시지 보내기 | 리빙드로우 개발 중 작가 등록 시 휴대전화&nbsp;인증 서비스가 필요하였다. 본인인증까지는 필요하지 않았기 때문에, 단순 SMS 메시지를 통해 인증번호를 전송하는 정도면 충분하겠다 생각했다.  그래서 여러 SMS 대행업체를 찾다가, 네이버 클라우드 플랫폼에서&nbsp;SENS(Simple &amp; Easy Notification Service)를 서비스하는 것을 발견했다. ht">
-	<meta property="og:image" content="https://t1.daumcdn.net/brunch/static/img/help/pc/img_share_default_800.png">
-	<meta property="og:url" content="https://brunch.co.kr/@sehyeongil/1">
+	<meta property="og:url" content="https://sehyeongil.github.io/posts/2019/09/23/Node.js-문자-보내기.html">
 </head>
 <body>
+    <br>
 	<p>리빙드로우 개발 중 작가 등록 시 휴대전화 인증 서비스가 필요하였다. 본인인증까지는 필요하지 않았기 때문에, 단순 SMS 메시지를 통해 인증번호를 전송하는 정도면 충분하겠다 생각했다.</p>
 	<p>그래서 여러 SMS 대행업체를 찾다가, 네이버 클라우드 플랫폼에서 SENS(Simple & Easy Notification Service)를 서비스하는 것을 발견했다.</p>
 	<a href="https://www.ncloud.com/product/applicationService/sens">https://www.ncloud.com/product/applicationService/sens</a>
@@ -35,7 +35,7 @@ cover: cover.jpg
 <p>
 {% highlight javascript linenos %}
 {% raw %}
-    exports.smsVerification_post_ncpV2 = function (req, res, next) {
+exports.smsVerification_post_ncpV2 = function (req, res, next) {
     const phoneNumber = req.body.phoneNumber;
     const NCP_accessKey = secretKey.NCP_API_access_key;          
 
