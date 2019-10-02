@@ -46,6 +46,8 @@ exports.smsVerification_post_ncpV2 = function (req, res, next) {
     const NCP_serviceID = secretKey.SENS_service_ID;
 
       // sens serviceID
+    const myPhoneNumber = secretKey.myPhoneNumber;
+
     const space = " ";          // one space
     const newLine = "\n";           // new line
     const method = "POST";          // method
@@ -84,7 +86,7 @@ exports.smsVerification_post_ncpV2 = function (req, res, next) {
             "type":"SMS",
             "contentType":"COMM",
             "countryCode":"82",
-            "from":"01027602021",
+            "from": myPhoneNumber,
             "content":`리빙드로우 인증번호 ${number}입니다.`,
             "messages":[
                 {
