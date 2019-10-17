@@ -1,0 +1,49 @@
+---
+layout: post
+title: 아임포트로 간단 결제 달아보기
+date: 2019-10-16 18:45:00
+categories: posts
+cover: cover.jpg
+---
+<head>
+	<title>node.js에 아임포트로 이니시스 결제 달아보기</title>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="title" content="node.js에 아임포트로 이니시스 결제 달아보기">
+    <meta name="description" content="">
+	<meta property="og:type" content="article">
+	<meta property="og:site_name" content="HotHotChoco">
+	<meta property="og:title" content="node.js에 아임포트로 이니시스 결제 달아보기">
+	<meta property="og:description" content="">
+	<meta property="og:url" content="https://sehyeongil.github.io/posts/2019/10/16/아임포트로-간단-결제-달아보기.html">
+</head>
+<body>
+    <img src="/images/2019-09-23-2.png">
+    <br>
+	<p>리빙드로우에 결제를 달아야되서, 여러 PG사를 뒤적뒤적 해보았다.<br>
+    대부분 조건이 비슷해서 간단하게 업계 점유율 높은대로 달아보자 결정하고, 이니시스를 부착하기로 결정.
+    <br>
+    여차저차해서 이니시스 제공 sdk를 다운받았다.<br>
+    그러나, 이니시스 제공 sdk에는 node.js용이 없었고, php나 jsp용 보고 node용으로 하나 만들어야 되는 실정.
+    <br>
+    메뉴얼은 탄탄했으나, 너무 많아서 읽으면서 작업 들어가면 개발만 2주는 잡아두고 해야될 것 같았다.
+    <br>
+    더 문제는 sdk 버전 바뀔때마다 대응해야되는걸 실시간으로 할 수 있을 까에 대한 걱정이었고, 그래서 다른방법 찾아보자 해서
+    <br>
+    찾은 방법이 부트페이, 아임포트. 다른 개발자들도 똑같은 고민을 했고, 나온 서비스더라.
+    <br>
+    이름이 아임포트가 더 이뻐보여서 아임포트 사용 결정. 한개 PG사 연동은 무료여서 더욱 괜찮아 보였다.
+    <br>
+    개발가이드 따라서 연동 시작하면 30분 정도 걸려서, 결제 연동은 끝.
+    <br>
+    그 뒤에 결제결과 검증하고, 결과 받아오고, DB 넣고 등등 여러 작업 해줘서 4~5시간 정도 걸린 것 같다.
+    <br>
+    PG사 패치사항 알아서 건드려주고, PG사 바뀌면 아임포트 설정 바꾸고, 결제부분 조금만 건드려두면 되서 너무 편한것같다.
+    <br>
+    심지어 복수 PG사 연동하는데 최초 100,000 결제하면 끝.
+    <br>
+    다음에도 사용할듯?
+    <img src="/images/2019-10-16/inisisTest.png">
+
+</body>
