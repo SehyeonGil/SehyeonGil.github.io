@@ -28,8 +28,8 @@ cover: cover.jpg
     </p>
     <p>
         두 모듈의 npm 사이트.
-        <a src="https://www.npmjs.com/package/axios">axios</a>
-        <a src="https://www.npmjs.com/package/cheerio">cheerio</a>
+        <a src="https://www.npmjs.com/package/axios" target="_balnk">axios</a>
+        <a src="https://www.npmjs.com/package/cheerio" target="_balnk">cheerio</a>
     </p>
     <br>
     <p>
@@ -71,12 +71,12 @@ cover: cover.jpg
     <br>
     {% highlight javascript linenos %}
     {% raw %}
-    const axios = require("axios");
-    const cheerio = require("cheerio");
+const axios = require("axios");
+const cheerio = require("cheerio");
 
-    const url = 'https://store.steampowered.com/search/?specials=1&ignore_preferences=1';
+const url = 'https://store.steampowered.com/search/?specials=1&ignore_preferences=1';
     {% endraw %}
-{% endhighlight %}
+    {% endhighlight %}
     <br>
     axios 모듈과 cheerio 모듈 선언하고, url 변수를 생성한다.
     <br>
@@ -87,7 +87,7 @@ cover: cover.jpg
     <br>
 {% highlight javascript linenos %}
     {% raw %}    
-    const getHtml = async (url) => {
+const getHtml = async (url) => {
     try {
         return await axios.get(url);
     } catch (error) {
@@ -106,28 +106,28 @@ getHtml 변수에 axios.get(url) 함수의 리턴값을 담는다.
         <br>
         {% highlight javascript linenos %}
         {% raw %}    
-            router.get('/', function(req, res, next) {
-                getHtml(url)
-                    .then(html => {
-                        let ulList = [];
-                        const $ = cheerio.load(html.data);
-                        const $bodyList = $("div#search_resultsRows").children("a");
-                        $bodyList.each(function(i, elem) {
-                            const price = $(this).find('div.search_price').text().replace(/,/gi,"")
-                                .replace(/ /gi,"").split("₩");
-                            ulList[i] = {
-                                title: $(this).find('span.title').text(),
-                                sale: $(this).find('div.search_discount span').text(),
-                                original: price[1],
-                                salePrice: price[2],
-                                href: $(this).attr('href'),
-                                imgSrc: $(this).find('div.col.search_capsule img').attr('src'),
-                            };
-                        });
-                        return ulList.filter(n => n.title);
-                    })
-                    .then(result => res.render('index', { title: result }));
+router.get('/', function(req, res, next) {
+    getHtml(url)
+        .then(html => {
+            let ulList = [];
+            const $ = cheerio.load(html.data);
+            const $bodyList = $("div#search_resultsRows").children("a");
+            $bodyList.each(function(i, elem) {
+                const price = $(this).find('div.search_price').text().replace(/,/gi,"")
+                    .replace(/ /gi,"").split("₩");
+                ulList[i] = {
+                    title: $(this).find('span.title').text(),
+                    sale: $(this).find('div.search_discount span').text(),
+                    original: price[1],
+                    salePrice: price[2],
+                    href: $(this).attr('href'),
+                    imgSrc: $(this).find('div.col.search_capsule img').attr('src'),
+                };
             });
+            return ulList.filter(n => n.title);
+        })
+        .then(result => res.render('index', { title: result }));
+});
         {% endraw %}
         {% endhighlight %}
         <br>
@@ -152,4 +152,51 @@ getHtml 변수에 axios.get(url) 함수의 리턴값을 담는다.
         <br>
         간단한 크롤링을 끝냈고, 이제 이 코드를 좀 더 손봐서 할인 전체 정보 긁어오고, DB에 저장할 차례.
     </p>
+    <h1>5.전체코드</h1>
+{% highlight javascript linenos %}
+{% raw %}      
+const express = require('express');
+const router = express.Router();
+const axios = require("axios");
+const cheerio = require("cheerio");
+
+const url = 'https://store.steampowered.com/search/?specials=1&ignore_preferences=1';
+
+const getHtml = async (url) => {
+    try {
+        return await axios.get(url);
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+    getHtml(url)
+        .then(html => {
+            let ulList = [];
+            const $ = cheerio.load(html.data);
+            const $bodyList = $("div#search_resultsRows").children("a");
+            console.log(typeof($bodyList));
+            $bodyList.each(function(i, elem) {
+                const price = $(this).find('div.search_price').text().replace(/,/gi,"")
+                    .replace(/ /gi,"").split("₩");
+                ulList[i] = {
+                    title: $(this).find('span.title').text(),
+                    sale: $(this).find('div.search_discount span').text(),
+                    original: price[1],
+                    salePrice: price[2],
+                    href: $(this).attr('href'),
+                    imgSrc: $(this).find('div.col.search_capsule img').attr('src'),
+                };
+            });
+            return ulList.filter(n => n.title);
+        })
+        .then(result => res.render('index', { title: result }));
+});
+
+module.exports = router;
+
+{% endraw %}
+{% endhighlight %}     
 </body>
